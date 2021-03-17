@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p><a href="{% url 'apidocuments:document' document.id %}">{{ document }}</a></p>
+
+<p>Добавить новый элемент в таблицу</p>
+
+<form action="{% url 'apidocuments:new_tableproducts' document.id %}" method='post'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name="submit">Записать и закрыть</button>
+
+{% endblock content %}

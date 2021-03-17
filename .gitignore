@@ -1,0 +1,3 @@
+vdocuments/
+__pycache__/
+*.sqlite3

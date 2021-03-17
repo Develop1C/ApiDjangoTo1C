@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page_header %}
+	<div class='jumbotron'>
+		<h1 class="display-3">Обмен документов по API</h1>
+
+		<p class="lead"> Для добавления документов зарегистрируйтесь</p>
+
+		<a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+		role="button">Регистрация &raquo;</a>
+	</div>
+{% endblock page_header %}
+
+
+{% block content %}
+
+<p>Документы:</p>
+
+<ul>
+	{% for document in documents %}
+		<a href="{% url 'apidocuments:document' document.id %}"><li>{{apidocuments}} {{document.Document_viewmovement}} № {{document.Document_number}} от {{document.Document_date}}, автор: {{document.Document_author}}, комментарий: {{document.Document_comment}}</a></li>
+	{% empty %}
+		<li>No topics have been.</li>
+	{% endfor %}
+
+</ul>
+
+<a href="{% url 'apidocuments:new_document' %}">Добавить документ</a>
+
+{% endblock content %}
+

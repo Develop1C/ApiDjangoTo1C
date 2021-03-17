@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p></p>
+{{document.Document_viewmovement}} № {{document.Document_number}} от {{document.Document_date}}, автор: {{document.Document_author}}, комментарий: {{document.Document_comment}}
+<p></p>
+ <table border="1">
+	<tr>
+ 		<th>Номенклатура</th>
+ 		<th>Количество</th>
+ 		<th>Цена</th>
+ 		<th>Стоимость</th>
+ 		<th>Редактирование</th>
+	 </tr>
+	{% for stroka in tableproducts %}
+ 	<tr>
+ 		<td>{{stroka.TableProducts_nomenclature}}</td>
+ 		<td>{{stroka.TableProducts_quantity}}</td>
+ 		<td>{{stroka.TableProducts_price}}</td>
+ 		<td>{{stroka.TableProducts_sum}}</td>
+ 		<td><a href="{% url 'apidocuments:edit_tableproducts' stroka.id %}">Редактировать</a></td>
+ 	</tr>
+ 	{% empty %}
+		<li>No topics have been.</li>
+	{% endfor %}
+ </table>
+
+<a href="{% url 'apidocuments:new_tableproducts' document.id %}">Добавить строку товара</a>
+
+{% endblock content %}

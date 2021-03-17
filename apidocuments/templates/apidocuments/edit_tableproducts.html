@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p><a href="{% url 'apidocuments:document' document.id %}">{{document.Document_viewmovement}} № {{document.Document_number}} от {{document.Document_date}}, автор: {{document.Document_author}}, комментарий: {{document.Document_comment}}</a></p>
+
+<p>Добавить новый элемент в таблицу:</p>
+
+<form action="{% url 'apidocuments:edit_tableproducts' tableproducts.id %}" method='post'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name="submit">Записать и закрыть</button>
+
+{% endblock content %}

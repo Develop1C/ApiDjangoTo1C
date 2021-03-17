@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Добавить новый документ:</p>
+
+<form action="{% url 'apidocuments:new_document' %}" method='post'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name="submit">Записать и закрыть</button>
+
+{% endblock content %}
